@@ -17,6 +17,9 @@
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
+  # Allow nested virtualization
+  boot.extraModprobeConfig = "options kvm_intel nested=1";
+
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -49,8 +52,8 @@
   services.xserver.enable = true;
 
   # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  services.desktopManager.gnome.enable = true;
+  services.displayManager.gdm.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -77,6 +80,8 @@
     #media-session.enable = true;
   };
 
+  services.spice-webdavd.enable = true;
+
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
@@ -87,16 +92,28 @@
     description = "Duane McKinney";
     extraGroups = [ 
     	"networkmanager"
-	"wheel"
-	"dmckinney"
-	"kvm"];
+      "wheel"
+      "dmckinney"
+      "kvm"
+      "libvirtd"
+    ];
     packages = with pkgs; [
     #  thunderbird
     ];
   };
-  # Allow remote-viewer to redirect usb devices
-  virtualisation.spiceUSBRedirection.enable = true;
 
+  virtualisation = {
+  	# Allow remote-viewer to redirect usb devices
+  	spiceUSBRedirection.enable = true;
+    libvirtd = {
+      enable = true;
+      qemu = {
+        package = pkgs.qemu_kvm;
+        swtpm.enable = true;
+
+      };
+    };
+  };
   # Install firefox.
   programs.firefox.enable = true;
 
@@ -109,13 +126,16 @@
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
   	wezterm
-	git
-	powershell
-	vscode
-	virt-viewer
-	microsoft-edge
-	neovim
-	gnomeExtensions.battery-health-charging
+    git
+    powershell
+    vscode
+    virt-viewer
+    microsoft-edge
+    neovim
+    gnomeExtensions.battery-health-charging
+    libreoffice
+    gnome-boxes
+    remmina
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
