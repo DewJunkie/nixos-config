@@ -20,15 +20,19 @@
   # Allow nested virtualization
   boot.extraModprobeConfig = "options kvm_intel nested=1";
 
-  networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
+
+networking = {
+  hostName = "nix-dlm";
   # Enable networking
-  networking.networkmanager.enable = true;
+  networkmanager.enable = true;
+};
+
 
   # Set your time zone.
   time.timeZone = "America/Chicago";
@@ -136,6 +140,8 @@
     libreoffice
     gnome-boxes
     remmina
+    virt-manager
+    polkit
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
