@@ -48,9 +48,9 @@
     hostName = "nix-dlm";
     # Enable networking
     networkmanager.enable = true;
-    bridges.br0 = {
-      interfaces = [ "eth0" ];
-    };
+    #bridges.br0 = {
+    #  interfaces = [ "eth0" ];
+    #};
   };
 
 
