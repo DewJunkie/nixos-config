@@ -26,12 +26,32 @@
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
+  hardware = {
+    amdgpu.opencl.enable = true;
+    graphics = {
+      enable = true;
+      enable32Bit = true;
+    };
+  };
 
-networking = {
-  hostName = "nix-dlm";
-  # Enable networking
-  networkmanager.enable = true;
-};
+  # boot.kernelParams = [
+  #   # The kernel module parameter gttsize is a is deprecated and will be removed in the future.
+  #   #options amdgpu gttsize=120000
+
+  #   # specified as 4KiB pages: 120 GB GTT
+  #   "options ttm pages_limit=31457280"
+  #   # specified as 4KiB pages: 60 GB pre-allocated
+  #   "options ttm page_pool_size=15728640"
+  # ];
+
+  networking = {
+    hostName = "nix-dlm";
+    # Enable networking
+    networkmanager.enable = true;
+    bridges.br0 = {
+      interfaces = [ "eth0" ];
+    };
+  };
 
 
   # Set your time zone.
