@@ -74,6 +74,13 @@
     LC_TELEPHONE = "en_US.UTF-8";
     LC_TIME = "en_US.UTF-8";
   };
+  
+  services = {
+    asusd = {
+      enable = true;
+      enableUserService = true;
+    };
+  };
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
@@ -165,6 +172,7 @@
     remmina
     virt-manager
     polkit
+    asusctl
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
