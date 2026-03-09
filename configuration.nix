@@ -45,13 +45,15 @@
   # ];
 
   networking = {
-    interfaces.etho0.useDHCP = false;
+    useDHCP = false;
     hostName = "nix-dlm";
     # Enable networking
     networkmanager.enable = true;
     bridges.br0 = {
       interfaces = [ "eth0" ];
     };
+    # Don't mess with wired network in gnome
+    interfaces.br0.useDHCP = true;
   };
 
 
