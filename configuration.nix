@@ -56,6 +56,19 @@
     interfaces.br0.useDHCP = true;
   };
 
+  networking.firewall = {
+    enable = true;
+    allowPing = true;
+    allowedTCPPortRanges = [
+      # GSConnect/KDE Connect
+      {from = 1714; to = 1764;}
+    ];
+    allowedUDPPortRanges = [
+      # GSConnect/KDE Connect
+      {from = 1714; to = 1764;}
+    ];
+  };
+
 
   # Set your time zone.
   time.timeZone = "America/Chicago";
