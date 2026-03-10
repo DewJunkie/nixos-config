@@ -174,6 +174,7 @@
     polkit
     asusctl
     steam
+    gnomeExtensions.gsconnect
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
