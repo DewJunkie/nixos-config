@@ -173,6 +173,7 @@
     virt-manager
     polkit
     asusctl
+    steam
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
