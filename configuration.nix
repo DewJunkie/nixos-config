@@ -197,6 +197,9 @@
     ripgrep
     fd
     tree-sitter
+    gcc_multi
+    gnumake
+    cmake
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
