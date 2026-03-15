@@ -189,6 +189,7 @@
     steam
     gnomeExtensions.gsconnect
     digikam
+    thunderbird
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
