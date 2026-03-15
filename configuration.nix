@@ -190,6 +190,7 @@
     gnomeExtensions.gsconnect
     digikam
     thunderbird
+    nerd-fonts.caskaydia-mono
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
