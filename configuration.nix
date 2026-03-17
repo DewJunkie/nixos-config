@@ -170,36 +170,39 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  fonts.packages = with pkgs; [
+    nerd-fonts.caskaydia-mono
+  ];
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
-  	wezterm
+    asusctl
+    cmake
+    digikam
+    fd
+    gcc_multi
     git
-    powershell
-    vscode
-    virt-viewer
+    gnome-boxes
+    gnomeExtensions.battery-health-charging
+    gnomeExtensions.gsconnect
+    gnumake
+    libreoffice
     microsoft-edge
     neovim
-    gnomeExtensions.battery-health-charging
-    libreoffice
-    gnome-boxes
-    remmina
-    virt-manager
     polkit
-    asusctl
-    steam
-    gnomeExtensions.gsconnect
-    digikam
-    thunderbird
-    nerd-fonts.caskaydia-mono
+    powershell
+    remmina
     ripgrep
-    fd
+    steam
+    thunderbird
     tree-sitter
-    gcc_multi
-    gnumake
-    cmake
+    virt-manager
+    virt-viewer
+    vscode
+    wezterm
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
