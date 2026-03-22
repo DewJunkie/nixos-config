@@ -211,6 +211,7 @@
     microsoft-edge
     neovim
     podman
+    podman-desktop
     polkit
     powershell
     remmina
