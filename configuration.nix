@@ -207,10 +207,12 @@
     gnomeExtensions.battery-health-charging
     gnomeExtensions.gsconnect
     gnumake
+    kubectl
     libreoffice
     microsoft-edge
     neovim
     podman
+    podman-compose
     podman-desktop
     polkit
     powershell
