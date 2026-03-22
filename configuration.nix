@@ -21,6 +21,8 @@
   # Allow nested virtualization
   boot.extraModprobeConfig = "options kvm_intel nested=1";
 
+  boot.enableContainers = true;
+
   console.font = "CaskaydiaMono NF";
 
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -70,6 +72,11 @@
       # GSConnect/KDE Connect
       {from = 1714; to = 1764;}
     ];
+  };
+
+  nix.settings = {
+    download-buffer-size=524288000; # 500 MB
+    experimental-features = [ "nix-command" "flakes" ];
   };
 
 
