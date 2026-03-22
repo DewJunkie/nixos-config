@@ -210,6 +210,7 @@
     libreoffice
     microsoft-edge
     neovim
+    podman
     polkit
     powershell
     remmina
