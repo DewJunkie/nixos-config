@@ -160,10 +160,11 @@
     description = "Duane McKinney";
     extraGroups = [ 
     	"networkmanager"
-      "wheel"
       "dmckinney"
       "kvm"
       "libvirtd"
+      "podman"
+      "wheel"
     ];
     packages = with pkgs; [
     #  thunderbird
@@ -171,7 +172,14 @@
   };
 
   virtualisation = {
+    containers.enable = true;
   	# Allow remote-viewer to redirect usb devices
+    podman = {
+      enable = true;
+      dockerCompat = true;
+      defaultNetwork.settings.dns_enabled = true;
+    };
+
   	spiceUSBRedirection.enable = true;
     libvirtd = {
       enable = true;
@@ -182,8 +190,21 @@
       };
     };
   };
+
+  programs.neovim = {
+    defaultEditor = true;
+    enable = true;
+    viAlias = true;
+  };
+
   # Install firefox.
   programs.firefox.enable = true;
+
+  programs.steam.enable = true;
+
+  programs.thunderbird.enable = true;
+
+  programs.virt-manager.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -210,18 +231,13 @@
     kubectl
     libreoffice
     microsoft-edge
-    neovim
-    podman
     podman-compose
     podman-desktop
     polkit
     powershell
     remmina
     ripgrep
-    steam
-    thunderbird
     tree-sitter
-    virt-manager
     virt-viewer
     vscode
     wezterm
