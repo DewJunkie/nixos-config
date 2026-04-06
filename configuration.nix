@@ -101,7 +101,7 @@
   services = {
     asusd = {
       enable = true;
-      enableUserService = true;
+      #enableUserService = true;
     };
   };
 
@@ -208,6 +208,9 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.permittedInsecurePackages = [
+    "libsoup-2.74.3"
+  ];
 
   fonts.packages = with pkgs; [
     nerd-fonts.caskaydia-mono
@@ -219,6 +222,7 @@
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
     asusctl
+    citrix_workspace
     cmake
     digikam
     fd
@@ -235,6 +239,7 @@
     podman-desktop
     polkit
     powershell
+    prismlauncher
     remmina
     ripgrep
     tree-sitter
