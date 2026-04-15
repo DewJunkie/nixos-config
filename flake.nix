@@ -4,7 +4,6 @@
     breezy-desktop.url = "github:johnrizzo1/breezy-desktop-nixos";
   };
   outputs = { self, nixpkgs, breezy-desktop, ... }: {
-    # replace 'joes-desktop' with your hostname here.
     nixosConfigurations.nix-dlm = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [ 
