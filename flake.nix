@@ -6,6 +6,7 @@
   outputs = { self, nixpkgs, breezy-desktop, ... }: {
     nixosConfigurations.nix-dlm = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
+      specialArgs = { inherit breezy-desktop; };
       modules = [ 
         ./configuration.nix
         breezy-desktop.nixosModules.breezy-desktop
