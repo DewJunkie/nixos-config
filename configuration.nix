@@ -60,8 +60,12 @@
       interfaces = [ "eth0" ];
     };
     # Don't mess with wired network in gnome
-    interfaces.br0.useDHCP = true;
+    interfaces.br0 = {
+      useDHCP = true;
+    };
   };
+
+  systemd.services.NetworkManager-wait-online.enable = false;
 
   networking.firewall = {
     enable = true;
