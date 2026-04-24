@@ -54,18 +54,32 @@
   networking = {
     useDHCP = false;
     hostName = "nix-dlm";
+    usePredictableInterfaceNames = false;
     # Enable networking
-    networkmanager.enable = true;
-    bridges.br0 = {
-      interfaces = [ "eth0" ];
-    };
-    # Don't mess with wired network in gnome
-    interfaces.br0 = {
-      useDHCP = true;
+    networkmanager = {
+      enable = true;
+      ensureProfiles.profiles = {
+        "br0" = {
+          connection = {
+            id = "br0";
+            type = "bridge";
+            interface-name = "br0";
+          };
+          ipv4.method = "auto";
+          ipv6.method = "auto";
+        };
+        "br0-slave-eth0" = {
+          connection = {
+            id = "br0-slave-eth0";
+            type = "ethernet";
+            interface-name = "eth0";
+            master = "br0";
+            slave-type = "bridge";
+          };
+        };
+      };
     };
   };
-
-  systemd.services.NetworkManager-wait-online.enable = false;
 
   networking.firewall = {
     enable = true;
