@@ -252,6 +252,7 @@
     gnomeExtensions.battery-health-charging
     gnomeExtensions.gsconnect
     gnumake
+    javaPackages.compiler.openjdk21
     kubectl
     libreoffice
     microsoft-edge
