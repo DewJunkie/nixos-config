@@ -34,6 +34,21 @@
         "type": "github"
       }
     },
+    "nixpkgs-dewjunkie": {
+      "locked": {
+        "lastModified": 1777683427,
+        "narHash": "sha256-bJC5J8l2RIb4LmlReeLv+HdPaTtLpqAEObmxIImzTfo=",
+        "owner": "DewJunkie",
+        "repo": "nixpkgs",
+        "rev": "c39868237d4ce7cfeac9342e10559707df6f5fea",
+        "type": "github"
+      },
+      "original": {
+        "owner": "DewJunkie",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs_2": {
       "locked": {
         "lastModified": 1775710090,
@@ -53,7 +68,8 @@
     "root": {
       "inputs": {
         "breezy-desktop": "breezy-desktop",
-        "nixpkgs": "nixpkgs_2"
+        "nixpkgs": "nixpkgs_2",
+        "nixpkgs-dewjunkie": "nixpkgs-dewjunkie"
       }
     }
   },

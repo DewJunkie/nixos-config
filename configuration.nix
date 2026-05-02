@@ -12,7 +12,6 @@
       ./hardware-configuration.nix
     ];
 
-  nixpkgs.overlays = [ breezy-desktop.overlays.default ];
   nixpkgs.overlays = [
     breezy-desktop.overlays.default
     (final: prev: {
