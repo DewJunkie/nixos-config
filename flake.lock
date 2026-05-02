@@ -36,11 +36,11 @@
     },
     "nixpkgs-dewjunkie": {
       "locked": {
-        "lastModified": 1777683427,
-        "narHash": "sha256-bJC5J8l2RIb4LmlReeLv+HdPaTtLpqAEObmxIImzTfo=",
+        "lastModified": 1777685003,
+        "narHash": "sha256-9rIWKpEtYQ7+SO41bCZDGMQn8+R843TdQLnMU3dRKDo=",
         "owner": "DewJunkie",
         "repo": "nixpkgs",
-        "rev": "c39868237d4ce7cfeac9342e10559707df6f5fea",
+        "rev": "da047f712964934128e3b3a1f2a2f780d1a49c23",
         "type": "github"
       },
       "original": {
