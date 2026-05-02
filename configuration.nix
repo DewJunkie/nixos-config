@@ -4,6 +4,7 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { config, pkgs, breezy-desktop, ... }:
+{ config, pkgs, breezy-desktop, nixpkgs-dewjunkie, ... }:
 
 {
   imports =
@@ -12,6 +13,18 @@
     ];
 
   nixpkgs.overlays = [ breezy-desktop.overlays.default ];
+  nixpkgs.overlays = [
+    breezy-desktop.overlays.default
+    (final: prev: {
+      citrix_workspace = (import nixpkgs-dewjunkie {
+        inherit (prev) system;
+        config = {
+          allowUnfree = true;
+          permittedInsecurePackages = [ "libsoup-2.74.3" ];
+        };
+      }).citrix_workspace;
+    })
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -228,9 +241,6 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.permittedInsecurePackages = [
-    "libsoup-2.74.3"
-  ];
 
   fonts.packages = with pkgs; [
     nerd-fonts.caskaydia-mono

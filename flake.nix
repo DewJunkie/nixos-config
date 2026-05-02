@@ -1,12 +1,13 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-dewjunkie.url = "github:DewJunkie/nixpkgs";
     breezy-desktop.url = "github:johnrizzo1/breezy-desktop-nixos";
   };
-  outputs = { self, nixpkgs, breezy-desktop, ... }: {
+  outputs = { self, nixpkgs, breezy-desktop, nixpkgs-dewjunkie, ... }: {
     nixosConfigurations.nix-dlm = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
-      specialArgs = { inherit breezy-desktop; };
+      specialArgs = { inherit breezy-desktop nixpkgs-dewjunkie; };
       modules = [ 
         ./configuration.nix
         breezy-desktop.nixosModules.breezy-desktop
