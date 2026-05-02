@@ -15,7 +15,7 @@
     breezy-desktop.overlays.default
     (final: prev: {
       citrix_workspace = (import nixpkgs-dewjunkie {
-        inherit (prev) system;
+        system = prev.stdenv.hostPlatform.system;
         config = {
           allowUnfree = true;
           permittedInsecurePackages = [ "libsoup-2.74.3" ];
