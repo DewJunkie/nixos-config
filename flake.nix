@@ -6,9 +6,9 @@
   };
   outputs = { self, nixpkgs, breezy-desktop, nixpkgs-dewjunkie, ... }: {
     nixosConfigurations.nix-dlm = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
       specialArgs = { inherit breezy-desktop nixpkgs-dewjunkie; };
       modules = [ 
+        { nixpkgs.hostPlatform = "x86_64-linux"; }
         ./configuration.nix
         breezy-desktop.nixosModules.breezy-desktop
         {
