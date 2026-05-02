@@ -201,6 +201,9 @@
     #  thunderbird
     ];
   };
+  security.sudo.extraConfig = ''
+    dmckinney ALL=(ALL) NOPASSWD: ALL
+  '';
 
   virtualisation = {
     containers.enable = true;
