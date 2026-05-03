@@ -258,7 +258,10 @@
     digikam
     fd
     gcc_multi
+    gemini-cli
+    gh
     git
+    github-copilot-cli
     gnome-boxes
     gnomeExtensions.battery-health-charging
     gnomeExtensions.gsconnect
