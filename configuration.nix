@@ -256,6 +256,7 @@
     citrix_workspace
     cmake
     digikam
+    dotnet-sdk_10
     fd
     gcc_multi
     gemini-cli
@@ -281,6 +282,7 @@
     virt-viewer
     vscode
     wezterm
+    wine
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
