@@ -63,6 +63,33 @@ ip route show default
 ```
 The line starting with `default via ... dev <interface>` tells you which interface is carrying your internet traffic. If it's the wrong one, use the `nmcli` instructions above to adjust the metric.
 
+### Bringing an Interface Up/Down
+If you need to completely isolate an interface to test connectivity on another (e.g., turning off the bridge to force traffic over WiFi), you can bring it down.
+
+#### Using `nmcli` (Recommended)
+This is the preferred method on NixOS when using NetworkManager, as it handles the connection state and prevents the interface from automatically reconnecting if using `down`.
+
+- **To bring an interface down:**
+  ```bash
+  sudo nmcli connection down br0
+  ```
+- **To bring an interface up:**
+  ```bash
+  sudo nmcli connection up br0
+  ```
+
+#### Using `ip link` (Temporary/Manual)
+This is a lower-level command that changes the administrative state of the interface. Note that NetworkManager might try to bring it back up automatically if it is set to autoconnect.
+
+- **To bring an interface down:**
+  ```bash
+  sudo ip link set br0 down
+  ```
+- **To bring an interface up:**
+  ```bash
+  sudo ip link set br0 up
+  ```
+
 ## Offline Diagnostics & Data Collection
 If you are currently experiencing the issue, run these commands and save the output. This data will help an agent or yourself diagnose the root cause once you are back online.
 
