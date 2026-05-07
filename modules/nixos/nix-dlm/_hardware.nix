@@ -13,6 +13,12 @@
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
+  # Use latest kernel.
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
+  # Allow nested virtualization
+  boot.extraModprobeConfig = "options kvm_amd nested=1";
+
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/ab5b932c-95ab-4d02-8ba5-6baa5c059f22";
       fsType = "ext4";

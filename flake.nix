@@ -1,29 +1,14 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs-dewjunkie.url = "github:DewJunkie/nixpkgs";
+    flake-parts.url = "github:hercules-ci/flake-parts";
+    import-tree.url = "github:vic/import-tree";
+
     breezy-desktop.url = "github:johnrizzo1/breezy-desktop-nixos";
   };
-  outputs = { self, nixpkgs, breezy-desktop, nixpkgs-dewjunkie, ... }: {
-    nixosConfigurations.nix-dlm = nixpkgs.lib.nixosSystem {
-      specialArgs = { inherit breezy-desktop nixpkgs-dewjunkie; };
-      modules = [ 
-        { nixpkgs.hostPlatform = "x86_64-linux"; }
-        ./configuration.nix
-        breezy-desktop.nixosModules.breezy-desktop
-        {
-          services.breezy-desktop = {
-            enable = true;
 
-            # Pick your desktop environment:
-            gnome.enable = true;   # GNOME Shell extension + UI
-            # kwin.enable = true;  # KDE Plasma 6 KWin plugin + UI
-
-            # Optional:
-            # vulkan.enable = true; # Vulkan layer for XR gaming
-          };
-        }
-      ];
-    };
-  };
+  outputs = inputs:
+    inputs.flake-parts.lib.mkFlake { inherit inputs; } (
+      inputs.import-tree ./modules
+    );
 }
