@@ -17,11 +17,14 @@
               autoconnect = true;
             };
             bridge = {
-              stp = false;
+              stp = true;
+              mac-address = "a0:ce:c8:85:e7:c6";
             };
-            ipv4.method = "auto";
+            ipv4 = {
+              method = "auto";
+              route-metric = 100;
+            };
             ipv6.method = "auto";
-            ethernet.mac-address = "a0:ce:c8:85:e7:c6";
           };
           "br0-slave-eth0" = {
             connection = {
