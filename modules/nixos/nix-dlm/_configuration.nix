@@ -34,7 +34,7 @@
   # List packages installed in system profile.
   environment.systemPackages = with pkgs; [
     asusctl
-    citrix_workspace
+    # citrix_workspace
     cmake
     digikam
     dotnet-sdk_10

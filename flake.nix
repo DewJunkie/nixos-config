@@ -5,6 +5,7 @@
     import-tree.url = "github:vic/import-tree";
 
     breezy-desktop.url = "github:johnrizzo1/breezy-desktop-nixos";
+    nixpkgs-dewjunkie.url = "github:DewJunkie/nixpkgs";
   };
 
   outputs = inputs:
