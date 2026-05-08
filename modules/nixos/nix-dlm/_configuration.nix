@@ -52,7 +52,10 @@
     javaPackages.compiler.openjdk21
     kubectl
     libreoffice
+    litellm
+    lmstudio
     microsoft-edge
+    ollama
     podman-compose
     podman-desktop
     polkit

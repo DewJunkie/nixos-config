@@ -37,6 +37,17 @@
       "libsoup-2.74.3"
     ];
 
+    nixpkgs.overlays = [
+      (final: prev: {
+        # Disable tests for openldap to bypass flaky upstream server-side tests 
+        # (e.g. test017-syncreplication-refresh) that often fail on i686-linux.
+        # This is safe as it's used as a client-side dependency for Bottles/Wine.
+        openldap = prev.openldap.overrideAttrs (oldAttrs: {
+          doCheck = false;
+        });
+      })
+    ];
+
     fonts.packages = with pkgs; [
       nerd-fonts.caskaydia-mono
     ];

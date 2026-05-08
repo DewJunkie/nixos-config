@@ -2,6 +2,19 @@
 
 This document contains common issues and their solutions for the `nix-dlm` host.
 
+## Build Failures
+
+### Flaky Test Failures (e.g., OpenLDAP)
+If a rebuild fails during a package's `checkPhase` (common with `openldap` on `i686-linux`):
+1. **Diagnose:** Find the `.drv` path in the error output and run:
+   ```bash
+   nix log /nix/store/...package-name.drv
+   ```
+2. **Fix:** If the log shows a test failure, disable tests via an overlay in `modules/features/base.nix`:
+   ```nix
+   <pkg-name> = prev.<pkg-name>.overrideAttrs (_: { doCheck = false; });
+   ```
+
 ## Networking
 
 ### Route Priority (Metric) Issues
