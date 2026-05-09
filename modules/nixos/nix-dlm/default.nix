@@ -8,6 +8,7 @@
       self.nixosModules.networking
       self.nixosModules.virtualization
       self.nixosModules.viture
+      self.nixosModules.llm
       self.nixosModules.DewJunkie
       inputs.breezy-desktop.nixosModules.breezy-desktop
       ./_configuration.nix
