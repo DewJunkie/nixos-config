@@ -56,6 +56,7 @@
     lmstudio
     microsoft-edge
     ollama
+    opencode
     podman-compose
     podman-desktop
     polkit
