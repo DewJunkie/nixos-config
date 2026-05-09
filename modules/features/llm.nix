@@ -9,7 +9,10 @@
         # Using the official GHCR image as per their latest documentation
         image = "ghcr.io/lemonade-sdk/lemonade-server:latest";
         
-        ports = [ "13305:13305" ];
+        ports = [ 
+          "13305:13305" 
+          "9000:9000"
+        ];
 
         # Official Environment Variables
         environment = {
@@ -51,6 +54,6 @@
       "d /var/lib/lemonade/recipe-cache 0755 root root -"
     ];
 
-    networking.firewall.allowedTCPPorts = [ 13305 ];
+    networking.firewall.allowedTCPPorts = [ 13305 9000 ];
   };
 }

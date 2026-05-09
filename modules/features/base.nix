@@ -48,6 +48,12 @@
       })
     ];
 
+    environment.systemPackages = with pkgs; [
+      amdgpu_top
+      nvtopPackages.amd
+      btop
+    ];
+
     fonts.packages = with pkgs; [
       nerd-fonts.caskaydia-mono
     ];
