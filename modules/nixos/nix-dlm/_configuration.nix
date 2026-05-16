@@ -54,6 +54,7 @@
     libreoffice
     litellm
     lmstudio
+    meld
     microsoft-edge
     ollama
     opencode
