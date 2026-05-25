@@ -19,6 +19,13 @@
   # Allow nested virtualization
   boot.extraModprobeConfig = "options kvm_amd nested=1";
 
+  # Custom Kernel Parameters
+  boot.kernelParams = [
+    "amd_iommu=off"
+    "amdgpu.gttsize=126976"
+    "ttm.pages_limit=32505856"
+  ];
+
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/ab5b932c-95ab-4d02-8ba5-6baa5c059f22";
       fsType = "ext4";

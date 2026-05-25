@@ -38,6 +38,7 @@
     # citrix_workspace
     cmake
     digikam
+    discord
     dotnet-sdk_10
     fd
     gcc_multi

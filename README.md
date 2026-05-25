@@ -19,4 +19,5 @@ Functionality is modularized in `modules/features/`.
 
 ## 📋 Past Friction Points
 - **Citrix:** If using `citrix_workspace`, ensure `libsoup-2.74.3` is in `permittedInsecurePackages` for that specific nixpkgs instance.
-- **Warnings:** If a build or evaluation warning is encountered (e.g., `'system'` renamed to `'stdenv.hostPlatform.system'`), the agent **must** prompt the user to ask if the warning should be addressed. If the user accepts, the agent should proceed to fix the warning.
+- **Warnings:** If a build or evaluation warning is encountered, the agent **must** prompt the user to ask if the warning should be addressed. If the user accepts, the agent should proceed to fix the warning.
+  - **Exception:** The warning `evaluation warning: 'system' has been renamed to/replaced by 'stdenv.hostPlatform.system'` is a known upstream issue and should be **ignored**. Do not attempt to fix it or prompt the user about it.

@@ -55,5 +55,8 @@
     ];
 
     networking.firewall.allowedTCPPorts = [ 13305 9000 ];
+
+    # Enable tuned daemon for performance optimizations
+    services.tuned.enable = true;
   };
 }

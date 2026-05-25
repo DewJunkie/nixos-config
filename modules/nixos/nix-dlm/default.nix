@@ -10,6 +10,7 @@
       self.nixosModules.viture
       self.nixosModules.llm
       self.nixosModules.DewJunkie
+      self.nixosModules.performance
       inputs.breezy-desktop.nixosModules.breezy-desktop
       ./_configuration.nix
       ./_hardware.nix
