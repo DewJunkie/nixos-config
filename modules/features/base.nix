@@ -1,7 +1,12 @@
 { self, inputs, ... }: {
   flake.nixosModules.base = { config, pkgs, breezy-desktop, ... }: {
     # Bootloader.
-    boot.loader.systemd-boot.enable = true;
+    boot.loader.grub = {
+      enable = true;
+      efiSupport = true;
+      device = "nodev";
+      useOSProber = true;
+    };
     boot.loader.efi.canTouchEfiVariables = true;
 
     boot.enableContainers = true;
