@@ -42,6 +42,10 @@
       "libsoup-2.74.3"
     ];
 
+    systemd.settings.Manager = {
+      DefaultTimeoutStartSec = "15s";
+    };
+
     nixpkgs.overlays = [
       (final: prev: {
         # Disable tests for openldap to bypass flaky upstream server-side tests 

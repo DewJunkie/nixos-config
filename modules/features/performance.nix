@@ -8,7 +8,11 @@
       # This ensures the GNOME power slider correctly reflects and controls TuneD.
       ppdSupport = true;
       ppdSettings = {
-        profiles.performance = "accelerator-performance";
+        profiles = {
+          performance = "accelerator-performance";
+          balanced = "balanced";
+          power-saver = "powersave";
+        };
         main.default = "performance";
       };
 

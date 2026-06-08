@@ -4,43 +4,22 @@
       useDHCP = false;
       hostName = "nix-dlm";
       usePredictableInterfaceNames = false;
-      # Enable networking
+      
+      # Standard NixOS bridge configuration
+      bridges."br0".interfaces = [ "eth0" ];
+      interfaces."br0" = {
+        useDHCP = true;
+        macAddress = "a0:ce:c8:85:e7:c6";
+      };
+
+      # NetworkManager configuration
       networkmanager = {
         enable = true;
-        settings.main.no-auto-default = "a0:ce:c8:85:e7:c6";
-        ensureProfiles.profiles = {
-          "br0" = {
-            connection = {
-              id = "br0";
-              type = "bridge";
-              interface-name = "br0";
-              autoconnect = true;
-            };
-            bridge = {
-              stp = true;
-              mac-address = "a0:ce:c8:85:e7:c6";
-            };
-            ipv4 = {
-              method = "auto";
-              route-metric = 100;
-            };
-            ipv6.method = "auto";
-          };
-          "br0-slave-eth0" = {
-            connection = {
-              id = "br0-slave-eth0";
-              type = "ethernet";
-              interface-name = "eth0";
-              master = "br0";
-              slave-type = "bridge";
-              autoconnect = true;
-            };
-            ipv4.method = "disabled";
-            ipv6.method = "ignore";
-          };
-        };
+        unmanaged = [ "eth0" "br0" ];
       };
     };
+
+    systemd.services.NetworkManager-wait-online.serviceConfig.TimeoutStartSec = "15s";
 
     networking.firewall = {
       enable = true;
