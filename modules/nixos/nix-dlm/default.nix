@@ -6,6 +6,7 @@
       self.nixosModules.base
       self.nixosModules.desktop
       self.nixosModules.networking
+      self.nixosModules.bluetooth
       self.nixosModules.virtualization
       self.nixosModules.viture
       self.nixosModules.llm

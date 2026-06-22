@@ -38,6 +38,8 @@
       removeWarningPopup = true;
     })
     # citrix_workspace
+    antigravity
+    ckan
     cmake
     digikam
     discord
