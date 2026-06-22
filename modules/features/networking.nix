@@ -8,14 +8,14 @@
       # Standard NixOS bridge configuration
       bridges."br0".interfaces = [ "eth0" ];
       interfaces."br0" = {
-        #useDHCP = true;
+        useDHCP = true;
         macAddress = "a0:ce:c8:85:e7:c6";
       };
 
       # NetworkManager configuration
       networkmanager = {
         enable = true;
-        unmanaged = [ "eth0"  ];
+        unmanaged = [ "eth0" "br0" ];
       };
     };
 
