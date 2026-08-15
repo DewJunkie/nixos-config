@@ -40,6 +40,7 @@
     nixpkgs.config.allowUnfree = true;
     nixpkgs.config.permittedInsecurePackages = [
       "libsoup-2.74.3"
+      "pnpm-10.29.2"
     ];
 
     systemd.settings.Manager = {

@@ -47,5 +47,12 @@
     services.asusd = {
       enable = true;
     };
+
+    #gamescope -w 1920 -h 1080 -W 3840 -H 2160 -f -F fsr -- %command%
+
+    programs.gamescope = {
+      enable = true;
+      capSysNice = false;
+    };
   };
 }

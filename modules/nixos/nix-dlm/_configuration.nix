@@ -72,6 +72,7 @@
     ripgrep
     tree-sitter
     virt-viewer
+    usbutils
     vscode
     wezterm
     wine
