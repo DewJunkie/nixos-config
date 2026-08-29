@@ -73,6 +73,7 @@
     tree-sitter
     virt-viewer
     usbutils
+    uv
     vscode
     wezterm
     wine
