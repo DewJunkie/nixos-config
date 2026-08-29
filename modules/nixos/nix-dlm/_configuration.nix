@@ -76,6 +76,7 @@
     uv
     vscode
     wezterm
+    wget
     wine
   ];
 }
