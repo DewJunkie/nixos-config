@@ -48,11 +48,23 @@
       enable = true;
     };
 
-    #gamescope -w 1920 -h 1080 -W 3840 -H 2160 -f -F fsr -- %command%
+    # Desktop applications
+    programs.firefox.enable = true;
+    programs.thunderbird.enable = true;
 
     programs.gamescope = {
       enable = true;
       capSysNice = false;
     };
+
+    environment.systemPackages = with pkgs; [
+      digikam
+      discord
+      gnomeExtensions.gsconnect
+      libreoffice
+      microsoft-edge
+      remmina
+      wezterm
+    ];
   };
 }

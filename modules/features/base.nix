@@ -58,10 +58,22 @@
       })
     ];
 
+    programs.neovim = {
+      defaultEditor = true;
+      enable = true;
+      viAlias = true;
+    };
+
     environment.systemPackages = with pkgs; [
       amdgpu_top
       nvtopPackages.amd
       btop
+      fd
+      git
+      powershell
+      ripgrep
+      usbutils
+      wget
     ];
 
     fonts.packages = with pkgs; [

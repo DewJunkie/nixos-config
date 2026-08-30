@@ -1,6 +1,19 @@
 { self, inputs, ... }: {
-  flake.nixosModules.llm = { config, pkgs, ... }: {
-    # NixOS OCI-containers module allows you to run Docker/Podman containers
+  flake.nixosModules.llm = { config, pkgs, nixpkgs-unstable, ... }:
+    let
+      pkgs-unstable = import nixpkgs-unstable {
+        system = pkgs.stdenv.hostPlatform.system;
+        config = config.nixpkgs.config;
+      };
+    in
+    {
+      environment.systemPackages = [
+        pkgs-unstable.litellm
+        pkgs-unstable.lmstudio
+        pkgs-unstable.ollama
+      ];
+
+      # NixOS OCI-containers module allows you to run Docker/Podman containers
     # declaratively. Since Lemonade isn't in nixpkgs yet, this is the best way
     # to get full hardware acceleration with minimal friction.
     virtualisation.oci-containers = {

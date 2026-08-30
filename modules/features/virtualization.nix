@@ -21,5 +21,12 @@
 
     programs.virt-manager.enable = true;
     services.spice-webdavd.enable = true;
+
+    environment.systemPackages = with pkgs; [
+      gnome-boxes
+      podman-compose
+      podman-desktop
+      virt-viewer
+    ];
   };
 }

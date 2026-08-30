@@ -1,6 +1,6 @@
 { self, inputs, ... }: {
   flake.nixosConfigurations.nix-dlm = inputs.nixpkgs.lib.nixosSystem {
-    specialArgs = { inherit (inputs) breezy-desktop nixpkgs-dewjunkie; };
+    specialArgs = { inherit (inputs) breezy-desktop nixpkgs-dewjunkie nixpkgs-unstable; };
     modules = [
       { nixpkgs.hostPlatform = "x86_64-linux"; }
       self.nixosModules.base
@@ -11,7 +11,9 @@
       self.nixosModules.viture
       self.nixosModules.llm
       self.nixosModules.DewJunkie
+      self.nixosModules.gemini
       self.nixosModules.performance
+      self.nixosModules.development
       inputs.breezy-desktop.nixosModules.breezy-desktop
       ./_configuration.nix
       ./_hardware.nix
