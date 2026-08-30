@@ -58,6 +58,8 @@
       })
     ];
 
+    programs.nix-ld.enable = true;
+
     programs.neovim = {
       defaultEditor = true;
       enable = true;

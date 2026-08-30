@@ -67,9 +67,47 @@ sudo nixos-rebuild switch --flake .#nix-dlm
   nix run nixpkgs#nvd -- diff /run/current-system ./result
   ```
 
+## 🧩 Running Unpatched Binaries & VS Code Extensions (nix-ld)
+
+`nix-ld` is enabled in `modules/features/base.nix` to allow unpatched dynamically linked Linux binaries (such as VS Code extensions, language servers, and downloaded binaries) to run on NixOS.
+
+### Handling Missing Library Errors
+
+If an unpatched binary fails with an error like:
+```text
+error while loading shared libraries: lib<name>.so.<version>: cannot open shared object file: No such file or directory
+```
+
+1. **Find the Nix package providing the library:**
+   - Use `nix-locate` (from `nix-index`):
+     ```bash
+     nix-locate --top-level lib<name>.so.<version>
+     ```
+   - Or search for the package on [search.nixos.org](https://search.nixos.org).
+
+2. **Add the package to `programs.nix-ld.libraries` in `modules/features/base.nix`:**
+   ```nix
+   programs.nix-ld = {
+     enable = true;
+     libraries = with pkgs; [
+       # Default libraries are included; add extra packages here:
+       openssl
+       zlib
+       # <missing-package>
+     ];
+   };
+   ```
+
+3. **Rebuild the system:**
+   ```bash
+   git add modules/features/base.nix
+   sudo nixos-rebuild switch --flake .#nix-dlm
+   ```
+
 ## 📋 Past Friction Points
 - **Citrix:** If using `citrix_workspace`, ensure `libsoup-2.74.3` is in `permittedInsecurePackages` for that specific nixpkgs instance.
 - **Warnings:** If a build or evaluation warning is encountered, the agent **must** prompt the user to ask if the warning should be addressed. If the user accepts, the agent should proceed to fix the warning.
   - **Exception:** The warning `evaluation warning: 'system' has been renamed to/replaced by 'stdenv.hostPlatform.system'` is a known upstream issue and should be **ignored**. Do not attempt to fix it or prompt the user about it.
+
 
 
