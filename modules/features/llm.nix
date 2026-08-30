@@ -46,7 +46,7 @@
           # Hardware Passthrough
           "--device=/dev/kfd"
           "--device=/dev/dri"
-          "--device=/dev/accel/accel0" # Added for your NPU support
+          "--device=/dev/accel/accel0" # NPU support (requires IOMMU enabled)
 
           # Permissions: Using numeric IDs (303 for render, 26 for video) 
           # to avoid "group not found" errors in the container.

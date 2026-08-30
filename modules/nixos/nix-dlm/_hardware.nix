@@ -21,7 +21,7 @@
 
   # Custom Kernel Parameters
   boot.kernelParams = [
-    "amd_iommu=off"
+    # "amd_iommu=off" - Disabled because amdxdna NPU driver requires IOMMU enabled
     "amdgpu.gttsize=126976"
     "ttm.pages_limit=32505856"
   ];
