@@ -14,6 +14,7 @@
       self.nixosModules.gemini
       self.nixosModules.performance
       self.nixosModules.development
+      self.nixosModules.vpn
       inputs.breezy-desktop.nixosModules.breezy-desktop
       ./_configuration.nix
       ./_hardware.nix
