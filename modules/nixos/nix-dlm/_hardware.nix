@@ -50,6 +50,19 @@
       ];
     };
 
+  fileSystems."/mnt/SDCard" =
+    { device = "/dev/disk/by-uuid/4A21-0000";
+      fsType = "exfat";
+      options = [
+        "nofail"
+        "x-systemd.device-timeout=3s"
+        "uid=0"
+        "gid=0"
+        "fmask=0022"
+        "dmask=0022"
+      ];
+    };
+
   swapDevices =
     [ { device = "/dev/disk/by-uuid/b881e194-f193-4c18-8f8d-ffe5e124dae0"; }
     ];

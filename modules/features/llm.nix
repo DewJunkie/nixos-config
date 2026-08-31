@@ -14,10 +14,10 @@
         pkgs.mergerfs
       ];
 
-      # MergerFS union pooling fast NVMe storage + SanDisk slow storage
+      # MergerFS union pooling fast NVMe storage + SanDisk + SDCard storage
       fileSystems."/var/lib/lemonade" = {
         fsType = "fuse.mergerfs";
-        device = "/var/lib/lemonade-fast:/mnt/SanDisk/lemonade-slow";
+        device = "/var/lib/lemonade-fast:/mnt/SanDisk/mergerfs/var/lib/lemonade:/mnt/SDCard/mergerfs/var/lib/lemonade";
         options = [
           "defaults"
           "allow_other"
