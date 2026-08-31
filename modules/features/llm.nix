@@ -11,7 +11,21 @@
         pkgs-unstable.litellm
         pkgs-unstable.lmstudio
         pkgs-unstable.ollama
+        pkgs.mergerfs
       ];
+
+      # MergerFS union pooling fast NVMe storage + SanDisk slow storage
+      fileSystems."/var/lib/lemonade" = {
+        fsType = "fuse.mergerfs";
+        device = "/var/lib/lemonade-fast:/mnt/SanDisk/lemonade-slow";
+        options = [
+          "defaults"
+          "allow_other"
+          "use_ino"
+          "category.create=ff"
+          "nofail"
+        ];
+      };
 
       # NixOS OCI-containers module allows you to run Docker/Podman containers
     # declaratively. Since Lemonade isn't in nixpkgs yet, this is the best way
@@ -59,12 +73,19 @@
       };
     };
 
+    # Ensure the container service starts after the mergerfs union is mounted
+    systemd.services.podman-lemonade-server = {
+      after = [ "var-lib-lemonade.mount" ];
+      wants = [ "var-lib-lemonade.mount" ];
+    };
+
     # Ensure the host directories exist with the correct permissions
     systemd.tmpfiles.rules = [
+      "d /var/lib/lemonade-fast 0755 root root -"
+      "d /var/lib/lemonade-fast/hf-cache 0755 root root -"
+      "d /var/lib/lemonade-fast/llama-models 0755 root root -"
+      "d /var/lib/lemonade-fast/recipe-cache 0755 root root -"
       "d /var/lib/lemonade 0755 root root -"
-      "d /var/lib/lemonade/hf-cache 0755 root root -"
-      "d /var/lib/lemonade/llama-models 0755 root root -"
-      "d /var/lib/lemonade/recipe-cache 0755 root root -"
     ];
 
     networking.firewall.allowedTCPPorts = [ 13305 9000 ];
