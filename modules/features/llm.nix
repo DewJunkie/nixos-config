@@ -17,7 +17,7 @@
       # MergerFS union pooling fast NVMe storage + SanDisk + SDCard storage
       fileSystems."/var/lib/lemonade" = {
         fsType = "fuse.mergerfs";
-        device = "/var/lib/lemonade-fast:/mnt/SanDisk/mergerfs/var/lib/lemonade:/mnt/SDCard/mergerfs/var/lib/lemonade";
+        device = "/var/mergerfs/var/lib/lemonade:/mnt/SanDisk/mergerfs/var/lib/lemonade:/mnt/SDCard/mergerfs/var/lib/lemonade";
         options = [
           "defaults"
           "allow_other"
@@ -81,10 +81,10 @@
 
     # Ensure the host directories exist with the correct permissions
     systemd.tmpfiles.rules = [
-      "d /var/lib/lemonade-fast 0755 root root -"
-      "d /var/lib/lemonade-fast/hf-cache 0755 root root -"
-      "d /var/lib/lemonade-fast/llama-models 0755 root root -"
-      "d /var/lib/lemonade-fast/recipe-cache 0755 root root -"
+      "d /var/mergerfs/var/lib/lemonade 0755 root root -"
+      "d /var/mergerfs/var/lib/lemonade/hf-cache 0755 root root -"
+      "d /var/mergerfs/var/lib/lemonade/llama-models 0755 root root -"
+      "d /var/mergerfs/var/lib/lemonade/recipe-cache 0755 root root -"
       "d /var/lib/lemonade 0755 root root -"
     ];
 
