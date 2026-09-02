@@ -43,8 +43,8 @@
       options = [
         "nofail"
         "x-systemd.device-timeout=3s"
-        "uid=0"
-        "gid=0"
+        "uid=1000"
+        "gid=100"
         "fmask=0022"
         "dmask=0022"
       ];
@@ -56,8 +56,8 @@
       options = [
         "nofail"
         "x-systemd.device-timeout=3s"
-        "uid=0"
-        "gid=0"
+        "uid=1000"
+        "gid=100"
         "fmask=0022"
         "dmask=0022"
       ];
