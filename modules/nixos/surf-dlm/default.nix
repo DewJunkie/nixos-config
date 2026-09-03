@@ -16,6 +16,8 @@
           ];
         };
 
+        system.stateVersion = "26.05";
+
         security.sudo.extraConfig = ''
           dmckinney ALL=(ALL) NOPASSWD: ALL
         '';
