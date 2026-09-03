@@ -1,0 +1,29 @@
+{ self, inputs, ... }: {
+  flake.nixosConfigurations.surf-dlm = inputs.nixpkgs.lib.nixosSystem {
+    specialArgs = { inherit (inputs) breezy-desktop nixpkgs-dewjunkie nixpkgs-unstable; };
+    modules = [
+      {
+        networking.hostName = "surf-dlm";
+
+        users.groups.dmckinney = {};
+        users.users.dmckinney = {
+          isNormalUser = true;
+          description = "Duane McKinney";
+          extraGroups = [
+            "networkmanager"
+            "dmckinney"
+            "wheel"
+          ];
+        };
+
+        security.sudo.extraConfig = ''
+          dmckinney ALL=(ALL) NOPASSWD: ALL
+        '';
+      }
+      self.nixosModules.base
+      self.nixosModules.desktop
+      self.nixosModules.gemini
+      ./_hardware-configuration.nix
+    ];
+  };
+}
