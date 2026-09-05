@@ -78,8 +78,10 @@
         wget
       ];
 
-      fonts.packages = with pkgs; [
-        nerd-fonts.caskaydia-mono
-      ];
-    };
+    fonts.packages = with pkgs; [
+      nerd-fonts.caskaydia-mono
+    ];
+
+    #system.stateVersion = "25.05";
+  };
 }

@@ -64,15 +64,15 @@
         capSysNice = false;
       };
 
-      environment.systemPackages = with pkgs; [
-        chromium
-        digikam
-        discord
-        gnomeExtensions.gsconnect
-        libreoffice
-        microsoft-edge
-        remmina
-        wezterm
-      ];
-    };
+    environment.systemPackages = with pkgs; [
+      chromium
+      #digikam
+      #discord
+      gnomeExtensions.gsconnect
+      #libreoffice
+      microsoft-edge
+      #remmina
+      wezterm
+    ];
+  };
 }

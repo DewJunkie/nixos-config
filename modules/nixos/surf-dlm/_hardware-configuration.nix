@@ -30,4 +30,42 @@
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+
+  # Microsoft Surface Go Hardware Configurations
+
+  # Enable IIO sensors for automatic screen rotation and ambient light sensor
+  hardware.sensor.iio.enable = true;
+  systemd.services.iio-sensor-proxy.wantedBy = [ "multi-user.target" ];
+
+  # Intel graphics acceleration (HD Graphics 615 / Kaby Lake)
+  hardware.graphics = {
+    enable = true;
+    extraPackages = with pkgs; [
+      intel-media-driver
+      intel-vaapi-driver
+      libva-vdpau-driver
+      libvdpau-va-gl
+    ];
+  };
+
+  # Thermal management for Intel processor
+  services.thermald.enable = true;
+
+  # Power management & display parameters:
+  # - "mem_sleep_default=deep": Forces S3 deep sleep instead of s2idle (S0ix "Modern Standby"),
+  #   preventing battery drain and heating issues while the Surface Go is suspended/in sleep.
+  # - "i915.enable_rc6=1": Enables Intel GPU Render Standby (RC6) power saving states, allowing
+  #   the HD Graphics 615 GPU to drop into ultra-low power consumption mode when idle.
+  # - "i915.modeset=1": Ensures the Intel i915 DRM/KMS driver is initialized early during boot
+  #   for reliable display modesetting and Wayland compositor support.
+  boot.kernelParams = [
+    "mem_sleep_default=deep"
+    "i915.enable_rc6=1"
+    "i915.modeset=1"
+  ];
+
+  boot.extraModprobeConfig = ''
+    options snd_hda_intel power_save=1
+    options snd_ac97_codec power_save=1
+  '';
 }

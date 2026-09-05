@@ -2,7 +2,7 @@
   flake.nixosConfigurations.surf-dlm = inputs.nixpkgs.lib.nixosSystem {
     specialArgs = { inherit (inputs) breezy-desktop nixpkgs-dewjunkie nixpkgs-unstable; };
     modules = [
-      {
+      ({ pkgs, ... }: {
         networking.hostName = "surf-dlm";
 
         users.groups.dmckinney = {};
@@ -21,7 +21,11 @@
         security.sudo.extraConfig = ''
           dmckinney ALL=(ALL) NOPASSWD: ALL
         '';
-      }
+
+        environment.systemPackages = with pkgs; [
+          brightnessctl
+        ];
+      })
       self.nixosModules.base
       self.nixosModules.desktop
       self.nixosModules.gemini
