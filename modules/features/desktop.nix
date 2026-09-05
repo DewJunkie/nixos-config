@@ -68,6 +68,7 @@
       chromium
       #digikam
       #discord
+      google-chrome
       gnomeExtensions.gsconnect
       #libreoffice
       microsoft-edge
