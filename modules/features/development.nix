@@ -10,6 +10,7 @@
       javaPackages.compiler.openjdk21
       kubectl
       meld
+      nixfmt
       nodejs
       opencode
       tree-sitter
