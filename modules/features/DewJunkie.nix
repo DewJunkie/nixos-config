@@ -1,5 +1,11 @@
 { self, inputs, ... }: {
-  flake.nixosModules.DewJunkie = { config, pkgs, nixpkgs-dewjunkie, ... }:
+  flake.nixosModules.DewJunkie =
+    {
+      config,
+      pkgs,
+      nixpkgs-dewjunkie,
+      ...
+    }:
     let
       pkgs-dewjunkie = import nixpkgs-dewjunkie {
         system = pkgs.stdenv.hostPlatform.system;

@@ -2,11 +2,11 @@
 
 {
   # Define a user account.
-  users.groups.dmckinney = {};
+  users.groups.dmckinney = { };
   users.users.dmckinney = {
     isNormalUser = true;
     description = "Duane McKinney";
-    extraGroups = [ 
+    extraGroups = [
       "networkmanager"
       "dmckinney"
       "kvm"

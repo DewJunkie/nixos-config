@@ -4,7 +4,7 @@
       useDHCP = false;
       hostName = "nix-dlm";
       usePredictableInterfaceNames = false;
-      
+
       # Standard NixOS bridge configuration
       bridges."br0".interfaces = [ "eth0" ];
       interfaces."br0" = {
@@ -15,7 +15,10 @@
       # NetworkManager configuration
       networkmanager = {
         enable = true;
-        unmanaged = [ "eth0" "br0" ];
+        unmanaged = [
+          "eth0"
+          "br0"
+        ];
       };
     };
 
@@ -27,11 +30,17 @@
       trustedInterfaces = [ "br0" ];
       allowedTCPPortRanges = [
         # GSConnect/KDE Connect
-        {from = 1714; to = 1764;}
+        {
+          from = 1714;
+          to = 1764;
+        }
       ];
       allowedUDPPortRanges = [
         # GSConnect/KDE Connect
-        {from = 1714; to = 1764;}
+        {
+          from = 1714;
+          to = 1764;
+        }
       ];
     };
 

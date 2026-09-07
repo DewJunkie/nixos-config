@@ -2,7 +2,7 @@
   flake.nixosModules.performance = { config, pkgs, ... }: {
     services.tuned = {
       enable = true;
-      
+
       # For GNOME users, it's better to map the PPD "performance" profile
       # to the TuneD "accelerator-performance" profile and set it as default.
       # This ensures the GNOME power slider correctly reflects and controls TuneD.
