@@ -16,10 +16,10 @@
       };
       boot.loader.efi.canTouchEfiVariables = true;
 
-    boot.enableContainers = true;
+      boot.enableContainers = true;
 
-    # Set your time zone.
-    time.timeZone = "America/Chicago";
+      # Set your time zone.
+      time.timeZone = "America/Chicago";
 
       # Select internationalisation properties.
       i18n.defaultLocale = "en_US.UTF-8";
@@ -79,10 +79,10 @@
         wget
       ];
 
-    fonts.packages = with pkgs; [
-      nerd-fonts.caskaydia-mono
-    ];
+      fonts.packages = with pkgs; [
+        nerd-fonts.caskaydia-mono
+      ];
 
-    #system.stateVersion = "25.05";
-  };
+      #system.stateVersion = "25.05";
+    };
 }

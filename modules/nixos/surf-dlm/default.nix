@@ -5,7 +5,7 @@
       ({ pkgs, ... }: {
         networking.hostName = "surf-dlm";
 
-        users.groups.dmckinney = {};
+        users.groups.dmckinney = { };
         users.users.dmckinney = {
           isNormalUser = true;
           description = "Duane McKinney";
