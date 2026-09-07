@@ -29,6 +29,7 @@
       self.nixosModules.base
       self.nixosModules.desktop
       self.nixosModules.gemini
+      self.nixosModules.development
       ./_hardware-configuration.nix
     ];
   };
