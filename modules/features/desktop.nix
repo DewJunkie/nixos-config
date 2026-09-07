@@ -58,6 +58,7 @@
     };
 
     environment.systemPackages = with pkgs; [
+      chromium
       digikam
       discord
       gnomeExtensions.gsconnect

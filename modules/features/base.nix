@@ -13,9 +13,6 @@
 
     console.font = "CaskaydiaMono NF";
 
-    # Set your time zone.
-    time.timeZone = "America/Chicago";
-
     # Select internationalisation properties.
     i18n.defaultLocale = "en_US.UTF-8";
 
@@ -32,16 +29,11 @@
     };
 
     nix.settings = {
-      download-buffer-size = 524288000; # 500 MB
       experimental-features = [ "nix-command" "flakes" ];
     };
 
     # Allow unfree packages
     nixpkgs.config.allowUnfree = true;
-    nixpkgs.config.permittedInsecurePackages = [
-      "libsoup-2.74.3"
-      "pnpm-10.29.2"
-    ];
 
     systemd.settings.Manager = {
       DefaultTimeoutStartSec = "15s";
@@ -67,8 +59,6 @@
     };
 
     environment.systemPackages = with pkgs; [
-      amdgpu_top
-      nvtopPackages.amd
       btop
       fd
       git
@@ -81,7 +71,5 @@
     fonts.packages = with pkgs; [
       nerd-fonts.caskaydia-mono
     ];
-
-    system.stateVersion = "25.05";
   };
 }

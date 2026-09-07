@@ -10,6 +10,7 @@
       javaPackages.compiler.openjdk21
       kubectl
       meld
+      nodejs
       opencode
       tree-sitter
       uv

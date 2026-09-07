@@ -2,7 +2,22 @@
   flake.nixosConfigurations.nix-dlm = inputs.nixpkgs.lib.nixosSystem {
     specialArgs = { inherit (inputs) breezy-desktop nixpkgs-dewjunkie nixpkgs-unstable; };
     modules = [
-      { nixpkgs.hostPlatform = "x86_64-linux"; }
+      ({ pkgs, ... }: {
+        nixpkgs.hostPlatform = "x86_64-linux";
+        nix.settings.download-buffer-size = 524288000; # 500 MB
+        time.timeZone = "America/Chicago";
+        system.stateVersion = "25.05";
+
+        nixpkgs.config.permittedInsecurePackages = [
+          "libsoup-2.74.3"
+          "pnpm-10.29.2"
+        ];
+
+        environment.systemPackages = with pkgs; [
+          amdgpu_top
+          nvtopPackages.amd
+        ];
+      })
       self.nixosModules.base
       self.nixosModules.desktop
       self.nixosModules.networking
