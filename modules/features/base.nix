@@ -18,7 +18,8 @@
 
       boot.enableContainers = true;
 
-      console.font = "CaskaydiaMono NF";
+      # Set your time zone.
+      time.timeZone = "America/Chicago";
 
       # Select internationalisation properties.
       i18n.defaultLocale = "en_US.UTF-8";
@@ -44,16 +45,6 @@
 
       # Allow unfree packages
       nixpkgs.config.allowUnfree = true;
-
-      services.openssh = {
-        enable = true;
-        openFirewall = true;
-        settings = {
-          PasswordAuthentication = false;
-          PermitRootLogin = "no";
-          AllowUsers = [ "dmckinney" ];
-        };
-      }
 
       systemd.settings.Manager = {
         DefaultTimeoutStartSec = "15s";
@@ -91,5 +82,7 @@
       fonts.packages = with pkgs; [
         nerd-fonts.caskaydia-mono
       ];
+
+      #system.stateVersion = "25.05";
     };
 }
