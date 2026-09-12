@@ -66,13 +66,13 @@
 
       environment.systemPackages = with pkgs; [
         chromium
-        #digikam
-        #discord
+        digikam
+        discord
         google-chrome
         gnomeExtensions.gsconnect
-        #libreoffice
+        libreoffice
         microsoft-edge
-        #remmina
+        remmina
         wezterm
       ];
     };
