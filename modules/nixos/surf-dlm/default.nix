@@ -17,6 +17,7 @@
       self.nixosModules.gemini
       self.nixosModules.development
       self.nixosModules.vpn
+      self.nixosModules.surface
       ./_hardware-configuration.nix
     ];
   };
