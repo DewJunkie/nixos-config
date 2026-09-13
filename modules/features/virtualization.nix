@@ -28,5 +28,11 @@
       podman-desktop
       virt-viewer
     ];
+
+    users.users.dmckinney.extraGroups = [
+      "kvm"
+      "libvirtd"
+      "podman"
+    ];
   };
 }
