@@ -19,7 +19,9 @@
         ];
       })
       self.nixosModules.base
+      self.nixosModules.dmckinney
       self.nixosModules.desktop
+      self.nixosModules.gaming
       self.nixosModules.networking
       self.nixosModules.bluetooth
       self.nixosModules.virtualization

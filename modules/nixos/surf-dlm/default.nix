@@ -5,28 +5,14 @@
       ({ pkgs, ... }: {
         networking.hostName = "surf-dlm";
 
-        users.groups.dmckinney = { };
-        users.users.dmckinney = {
-          isNormalUser = true;
-          description = "Duane McKinney";
-          extraGroups = [
-            "networkmanager"
-            "dmckinney"
-            "wheel"
-          ];
-        };
-
         system.stateVersion = "26.05";
-
-        security.sudo.extraConfig = ''
-          dmckinney ALL=(ALL) NOPASSWD: ALL
-        '';
 
         environment.systemPackages = with pkgs; [
           brightnessctl
         ];
       })
       self.nixosModules.base
+      self.nixosModules.dmckinney
       self.nixosModules.desktop
       self.nixosModules.gemini
       self.nixosModules.development

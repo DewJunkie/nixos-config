@@ -79,6 +79,8 @@
         wget
       ];
 
+      services.openssh.enable = true;
+
       fonts.packages = with pkgs; [
         nerd-fonts.caskaydia-mono
       ];
