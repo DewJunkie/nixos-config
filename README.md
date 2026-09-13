@@ -104,6 +104,25 @@ error while loading shared libraries: lib<name>.so.<version>: cannot open shared
    sudo nixos-rebuild switch --flake .#nix-dlm
    ```
 
+## 💻 Remote Deployment to Slower Machines (e.g. surf-dlm)
+
+To avoid heavy evaluation and compilation on slower hardware (like the Surface Go), build on this faster machine (`nix-dlm`) and deploy remotely over SSH:
+
+### 1. Test Without Adding Boot Entry
+```bash
+git add .
+nixos-rebuild test --flake .#surf-dlm --target-host dmckinney@surf-dlm --sudo
+```
+
+### 2. Switch & Make Default Boot Option
+```bash
+git add .
+nixos-rebuild switch --flake .#surf-dlm --target-host dmckinney@surf-dlm --sudo
+```
+
+- **How it works:** `nix-dlm` evaluates the flake and builds the closure locally, copies the binary artifacts over SSH to `surf-dlm`, and activates the new configuration remotely.
+- **Requirement:** Working SSH connection from this host to `surf-dlm` (e.g., via the shared `self.nixosModules.dmckinney` SSH key).
+
 ## 📋 Past Friction Points
 - **Citrix:** If using `citrix_workspace`, ensure `libsoup-2.74.3` is in `permittedInsecurePackages` for that specific nixpkgs instance.
 - **Warnings:** If a build or evaluation warning is encountered, the agent **must** prompt the user to ask if the warning should be addressed. If the user accepts, the agent should proceed to fix the warning.

@@ -41,6 +41,10 @@
           "nix-command"
           "flakes"
         ];
+        trusted-users = [
+          "root"
+          "@wheel"
+        ];
       };
 
       # Allow unfree packages
