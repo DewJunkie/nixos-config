@@ -9,12 +9,11 @@
     {
       # Enable the X11 windowing system.
       services.xserver.enable = true;
-      programs.ssh = {
-        forwardX11 = true;
-        extraConfig = ''
+      programs.ssh.extraConfig = ''
+        Host nix-dlm surf-dlm
+          ForwardX11 yes
           ForwardX11Trusted yes
-        '';
-      };
+      '';
 
       # Enable the GNOME Desktop Environment.
       services.desktopManager.gnome.enable = true;
