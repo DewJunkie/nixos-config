@@ -13,6 +13,7 @@
       nixfmt
       nodejs
       opencode
+      python3
       tree-sitter
       uv
       vscode
