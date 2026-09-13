@@ -83,7 +83,12 @@
         wget
       ];
 
-      services.openssh.enable = true;
+      services.openssh = {
+        enable = true;
+        settings = {
+          X11Forwarding = true;
+        };
+      };
 
       fonts.packages = with pkgs; [
         nerd-fonts.caskaydia-mono
