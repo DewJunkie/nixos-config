@@ -19,6 +19,14 @@
       services.desktopManager.gnome.enable = true;
       services.displayManager.gdm.enable = true;
 
+      # Enable rdp
+      services.gnome.gnome-remote-desktop.enable = true;
+      # Ensure the service starts automatically at boot so the settings panel appears
+      systemd.services.gnome-remote-desktop = {
+        wantedBy = [ "graphical.target" ];
+      };
+      networking.firewall.allowedTCPPorts = [ 3389 ];
+
       # Configure keymap in X11
       services.xserver.xkb = {
         layout = "us";
