@@ -26,6 +26,7 @@
         wantedBy = [ "graphical.target" ];
       };
       networking.firewall.allowedTCPPorts = [ 3389 ];
+      networking.firewall.allowedUDPPorts = [ 3389 ];
 
       # Configure keymap in X11
       services.xserver.xkb = {

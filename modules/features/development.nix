@@ -1,6 +1,8 @@
 { self, inputs, ... }: {
   flake.nixosModules.development = { config, pkgs, ... }: {
     environment.systemPackages = with pkgs; [
+      clang
+      clang-tools
       cmake
       dotnet-sdk_10
       gcc_multi
