@@ -10,6 +10,7 @@
       github-copilot-cli
       gnumake
       javaPackages.compiler.openjdk21
+      jetbrains.datagrip
       kubectl
       meld
       nixfmt
