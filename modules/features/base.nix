@@ -77,6 +77,7 @@
         btop
         fd
         git
+        keepassxc
         powershell
         ripgrep
         usbutils
